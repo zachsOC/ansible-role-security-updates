@@ -1,18 +1,5 @@
----
-- name: Install sucurity packages
-  hosts: "{{ hosts | default('all') }}"
-  gather_facts: false
-
-  tasks:
-   - name: checking updates
-     yum:
-       name: '*'
-       security: yes
-       state: latest
-     check_mode: yes
-     register: yum_output
-     become: true
-
-   - name: show that yum output
-     debug:
-       var: yum_output
+- name: Upgrade all packages
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+    releasever: '2023.0.20230517'
