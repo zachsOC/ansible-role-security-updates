@@ -1,6 +1,12 @@
----
-- name: Configure automatic security updates for all nodes
-  hosts: all
-  connection: local
-  roles:
-    - security-updates
+ tasks:
+   - name: checking updates
+     yum:
+       security: yes
+       state: latest
+     check_mode: yes
+     register: yum_output
+     become: true
+
+   - name: show that yum output
+     debug:
+       var: yum_output
