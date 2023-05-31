@@ -8,5 +8,3 @@
        name: '*'
        state: latest
        releasever: '2023.0.20230517'
-       check_mode: yes
-       become: true
