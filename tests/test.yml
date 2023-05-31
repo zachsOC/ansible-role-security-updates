@@ -1,6 +1,12 @@
- tasks:
+---
+- name: Install sucurity packages
+  hosts: "{{ hosts | default('all') }}"
+  gather_facts: false
+
+  tasks:
    - name: checking updates
      yum:
+       name: '*'
        security: yes
        state: latest
      check_mode: yes
